@@ -1,0 +1,31 @@
+<div class="container">
+ <form action="/users" method="POST">
+ <div class='row'>
+ <h3>User Login</h3>
+ <hr>
+ <div class='col-sm-4'>
+ <div class='form-group'>
+ <label for="username">User Name</label>
+ <input class="form-control" id="username" name="username" size="250" type="text" required="true" />
+ </div>
+ </div>
+ <div class='col-sm-4'>
+ <div class='form-group'>
+ <label for="password">Password</label>
+ <input class="form-control" id="password" name="password" required="true" size="250" type="password" />
+ </div>
+ </div>
+ </div>
+ <div class='row'>
+ <div class="col-md-1">
+ <button type="button" class="btn btn-warning" onclick="location.href='/';">Back</button>
+ </div>
+ <div class="col-md-1">
+ <button type="button" class="btn btn-danger" onclick="location.href='/users';">Reset</button>
+ </div>
+ <div class="col-md-2">
+ <button type="submit" class="btn btn-success">Login</button>
+ </div>
+ </div>
+ </form>
+ </div>

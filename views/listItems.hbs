@@ -1,0 +1,86 @@
+<div class="container">
+ <form action="/listItems/save" method="POST">
+ <div class='row'>
+ <h3>To Do List {{#if message }} - {{message}}{{/ if }}</h3>
+ <hr>
+ <input type="hidden" name="listId" value="{{list.listId}}" />
+ <div class='col-sm-4'>
+ <div class='form-group'>
+ <input class="form-control" id="contentName" name="contentName" placeholder="What you need to do?" size="250" type="text" required="true" 
+ value="{{list.contentName}}" />
+ </div>
+ </div>
+ <input type="hidden" name="isActive" value="false" />
+  <div class="col-md-2">
+ <button type="submit" class="btn btn-success">Submit</button>
+ </div>
+ </div>
+ </form>
+ 
+ <div class='row'>
+ {{#if listdata }}
+ <table class="table table-striped">
+ <thead>
+ <tr>
+  <th>CheckBox</th>
+   <th>Checked?</th>
+ <th>Task Name</th>
+
+ <th>Option</th>
+ </tr>
+ </thead>
+ {{#each listdata}}
+ <tr>
+   <form action="/listItems/save" method="POST">
+    <input type="hidden" name="listId" value="{{this.listId}}" />
+    <input type="hidden" name="isActive" value="!{{this.isActive}}" />
+    <input type="hidden" name="contentName" value="{{this.contentName}}" />
+    {{!-- onChange="this.form.submit()" --}}
+ <td><div class="checkbox">
+  <label><input type="checkbox" value="{{xxx}}"  id="myCheck" onclick="func({{this.listId}},'{{this.contentName}}',{{this.isActive}}); this.form.submit()" ></label>
+</div>
+</form></td>
+<td>{{this.isActive}}</td>
+ <td>{{this.contentName}}</td>
+ 
+
+ <td>
+ <a href="/listItems/edit/{{this.listId}}" title="Edit Record" class="btn btn-primary btn-xs ">
+ Edit
+ </a>
+ <a href="/listItems/delete/{{this.listId}}" title="Delete Record" class="btn btn-danger btn-xs " onclick="return confirm('You are about to delete {{this.contentName}}, are you sure?')">
+ Delete
+ </a>
+ </td>
+ </tr>
+ 
+ {{/each}}
+ </table>
+ <hr>
+ <div class='col-sm-4'>
+ <div class='form-group'>
+ <input class="form-control" id="contentName" name="contentName" placeholder="What you need to do?" size="250" type="text" required="true" 
+ value="{{list.contentName}}" />
+ </div>
+ </div>
+  <div class='col-sm-4'>
+ <div class='form-group'>
+  <div class="col-md-2">
+ <button type="button" class="btn btn-danger">Cancel All</button>
+ </div>
+ </div>
+ </div>
+ {{/if}}
+ </div>
+ </div>
+ <script>
+   function func(listId,contentName,isActive){
+     var list={listId,contentName,isActive}
+     xxx=!isActive
+    //console.log(Name, id, active);
+     list.isActive=isActive===true?false:true;
+     this.isActive=!isActive;
+    console.log(xxx);
+   }
+ </script>
+ 

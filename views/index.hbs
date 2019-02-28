@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+ <html>
+ 
+ <head>
+ <title>{{title}}</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+ 
+ <body>
+ <h3>{{ this.title }}</h3>
+ <hr>
+{{#if userName }}
+ <h4>Hello, {{ userName }} [{{ usertype }}]</h4>
+ <a href="/users/logout" class="btn btn-danger">Logout</a>
+ <a href="/listItems" class="btn btn-primary">Manage Customers</a>
+ {{ else }}
+ <a href="/users" class="btn btn-warning">User Login </a>
+ {{/if}}
+
+ </body>
+ 
+ </html>
